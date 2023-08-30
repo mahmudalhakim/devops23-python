@@ -9,6 +9,6 @@ print("-----------------------------")
 
 myScore = input("Your score: ")
 if int(myScore) > 99:
-  print("Winner!")
+    print("Winner!")
 else:
-  print("Try again 😭")
+    print("Try again 😭")
