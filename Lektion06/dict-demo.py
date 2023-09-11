@@ -62,7 +62,39 @@ person["address"] = {
     "ort": "Sollentuna",
     "postnummer": "192 67"
 }
+print(person)
 
 # Skriv ut adressen enligt svensk standard
 print(person['address']['gatuadress'])
 print(person['address']['postnummer'], (person['address']['ort']).upper())
+
+# Tolkning av dictionary objekt
+person = {
+    "firstname": "Johan",
+    "lastname": "Svensson",
+    "age": 25,
+    "pets": [
+
+    ]
+}
+'''
+Övning: Genom att tolka objektet ovan ska programmet 
+skriva ut följande:
+Johan Svensson är 25 år gammal och har 2 husdjur:
+* En 3 år gammal hund som heter Morris
+* En 3 år gammal katt som heter Lisa
+'''
+
+namn = person['firstname'] + " " + person['lastname']
+age = person['age']
+pets = person['pets']
+count_pets = len(pets)
+
+print('...  ÖVNING ... ')
+print(F"{namn} är {age} år gammal och har {count_pets} husdjur:")
+
+for pet in pets:
+    print(F"* En {pet['age']} år gammal {pet['type']} som heter {pet['name']}")
+
+# Skriv ut namnet på det första husdjuret
+print(person['pets'][0]['name'])
