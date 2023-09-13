@@ -2,69 +2,86 @@
 Övningsuppgift 12.6
 Live demo: https://dva128demo.mdh.repl.co/#week5/alwaysnote
 """
-
 import json
 import os
 
-# Läs listan från filen
-with open('notes.json') as f:
-    notes = json.loads(f.read())
+# Läs in listan från notes.json
+'''
+notes = {
+    "Important": "Lite test och annat",
+    "Notes from lecture": "Testar ... "
+}
+'''
+with open('notes.json', 'a+') as f:
+    try:
+        notes = json.loads(f.read())
+    except:
+        notes = {}
 
 while True:
 
     # Rensa terminalfönstret
     if os.name == 'nt':
         os.system('cls')
-    elif os.name == 'posix':
+    else:
         os.system('clear')
 
-    # Rita UI
-    print(".:  ALWAYSNOTE  :.")
-    print("-- gold edition --")
-    print("******************")
+    # Skapa UI
+    print('.:  ALWAYSNOTE  :.')
+    print('-- gold edition --')
+    print('******************')
+
+    # Visa title från notes
     for key in notes:
-        print(key)
-    print("------------------")
-    print("view | view note")
-    print("add  | add note")
-    print("rm   | remove note")
-    print("exit | exit program")
-    print("------------------")
+        print('-', key)
 
-    # Visa prompt
-    choice = input("menu > ")
+    print('------------------')
+    print('view | view note')
+    print('add  | add note')
+    print('rm   | remove note')
+    print('exit | exit program')
 
-    if choice == "view":
-        key = input("title > ")
+    option = input('menu > ')
+
+    #  View
+    if option == 'view':
+        title = input('title > ')
         try:
-            print(notes[key])
-        except KeyError:
-            print("ERROR: Unknown note")
+            print(notes[title])
+        except KeyError as e:
+            print("ERROR: Unknown note:", e)
 
-    elif choice == "add":
-        key = input("titel > ")
-        value = input("descr > ")
-        notes[key] = value
-        print("INFO: Note added")
+    # Add
+    elif option == 'add':
+        title = input('title > ')
+        desc = input('desc > ')
+        notes[title] = desc
+        print('------------------')
+        print('INFO: Note added')
 
-    elif choice == "rm":
-        key = input("title > ")
+    # Remove
+    elif option == 'rm':
+        title = input('title > ')
+        # del notes[title]
         try:
-            del notes[key]
-            print("INFO: Note deleted")
-        except KeyError:
-            print("ERROR: Unknown note")
+            notes.pop(title)
+            print('INFO: Note deleted')
+        except KeyError as e:
+            print("ERROR: Unknown note:", e)
 
-    elif choice == "exit":
-        # Spara listan i en fil i JSON-format
-        print("Saving ...")
+    # Exit
+    elif option == 'exit':
+        print('Saving to notes.json ...')
+
+        # Implementera lagring i ett icke-flyktigt minne
         with open('notes.json', 'w') as f:
-            f.write(json.dumps(notes, ensure_ascii=False))
+            f.write(json.dumps(notes))
 
-        exit()
+        print('Programmet stängdes!')
+        break
 
     else:
-        print("ERROR: Unknown command", choice)
+        print('Ogiltigt kommando...')
 
-    print("------------------")
-    input("Press enter to continue...")
+    print('------------------')
+    input('Press enter to continue...')
