@@ -74,8 +74,16 @@ person = {
     "lastname": "Svensson",
     "age": 25,
     "pets": [
-        {"name": "Morris", "age": 3, "type": "hund"},
-        {"name": "Lisa", "age": 2, "type": "katt"}
+        {
+            "name": "Morris",
+            "age": 3,
+            "type": "hund"
+        },
+        {
+            "name": "Lisa",
+            "age": 2,
+            "type": "katt"
+        }
     ]
 }
 '''

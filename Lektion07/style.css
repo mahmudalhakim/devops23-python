@@ -1,0 +1,33 @@
+/*
+En CSS-kommentar
+*/
+
+h1{
+    color:blue;
+    font-size:32px;
+}
+
+a{
+  text-decoration: none;
+}
+
+/* unvisited link */
+a:link {
+  color: #ff0000;
+}
+
+/* visited link */
+a:visited {
+  color: #008000;
+}
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+  text-decoration: underline;
+}
+
+/* selected link */
+a:active {
+  color: blue;
+}
