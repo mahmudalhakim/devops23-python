@@ -12,8 +12,17 @@ notes = {
     "Notes from lecture": "Testar ... "
 }
 '''
+
+'''
+För att öppna en fil för både läsning och skrivning, 
+och skapa filen om den inte finns med bibehållet befintligt innehåll, 
+kan du använda läget "a+" (append och läs). 
+'''
 with open('notes.json', 'a+') as f:
     try:
+        # Läs innehållet i filen (om det finns)
+        f.seek(0)
+
         notes = json.loads(f.read())
     except:
         notes = {}
