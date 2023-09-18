@@ -4,6 +4,9 @@ from lib import utils
 import math
 
 # Anropa en funktion (call / invoke)
+utils.print_hello()
+utils.print_message("Hello, world!")
+utils.print_message("hej")
 print("Summan är :", utils.addera(1, 2))
 
 utils.greet()
@@ -17,5 +20,3 @@ print(utils.MAX_NUM)
 # Anropa en funktion/variabel som finns i standardmodulen math
 print(math.pi)
 print(math.pow(2, 5))
-
-
