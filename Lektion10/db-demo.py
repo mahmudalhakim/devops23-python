@@ -11,14 +11,14 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 sql = "INSERT INTO emails (email) VALUES (%s)"
-val = ["mahmud@example.com"]
+val = ["yasir@example.com"]
 mycursor.execute(sql, val)
 
 mydb.commit()
 
 print(mycursor.rowcount, "record inserted.")
 
-sql = "SELECT * FROM emails WHERE email LIKE 'mahmud%' "
+sql = "SELECT * FROM emails "
 mycursor.execute(sql)
 
 table = mycursor.fetchall()
